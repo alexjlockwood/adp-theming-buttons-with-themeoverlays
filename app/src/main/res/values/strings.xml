@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Themed Buttons</string>
+    <string name="enable_all">Enable all</string>
+    <string name="disable_all">Disable all</string>
 </resources>
