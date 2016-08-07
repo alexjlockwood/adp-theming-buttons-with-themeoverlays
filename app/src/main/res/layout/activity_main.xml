@@ -19,6 +19,17 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Light themed default button"/>
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Light themed accent button"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Light themed custom red button"
             android:theme="@style/LightCustomRedButtonTheme"/>
 
@@ -29,6 +40,19 @@
             android:text="Light themed custom red button"
             android:textColor="?android:textColorPrimaryInverse"
             app:backgroundTint="@color/quantum_googred500"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dark themed default button"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dark themed accent button"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
         <Button
             android:layout_width="wrap_content"
