@@ -1,9 +1,0 @@
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:alpha="?android:disabledAlpha"
-          android:color="?attr/colorButtonNormal"
-          android:state_enabled="false"/>
-
-    <item android:color="@color/quantum_googred500"/>
-
-</selector>
