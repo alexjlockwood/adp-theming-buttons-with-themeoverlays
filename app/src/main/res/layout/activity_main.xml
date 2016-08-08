@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,62 +11,69 @@
     tools:context="com.example.alockwood.themedbuttons.MainActivity">
 
     <LinearLayout
-        android:id="@+id/linearlayout"
+        android:id="@+id/button_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/light_button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Light themed default button"/>
+            android:text="@string/light_themed_default_button"/>
 
         <Button
+            android:id="@+id/light_button2"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Light themed accent button"/>
+            android:text="@string/light_themed_accent_button"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Light themed custom red button"
-            android:theme="@style/LightCustomRedButtonTheme"/>
-
-        <android.support.v7.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="Light themed custom red button"
-            android:textColor="?android:textColorPrimaryInverse"
-            app:backgroundTint="@color/quantum_googred500"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dark themed default button"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
-
-        <Button
+            android:id="@+id/light_button3"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dark themed accent button"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+            android:text="@string/light_themed_custom_accent_button"
+            android:theme="@style/LightAccentRedButtonTheme"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dark themed custom red button"
-            android:theme="@style/DarkCustomRedButtonTheme"/>
-
-        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/light_button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Dark themed custom red button"
-            android:textColor="?android:textColorPrimary"
-            app:backgroundTint="@color/quantum_googred500"/>
+            android:text="@string/light_themed_custom_accent_button"/>
+
+        <Button
+            android:id="@+id/dark_button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dark_themed_default_button"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+
+        <Button
+            android:id="@+id/dark_button2"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dark_themed_accent_button"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+
+        <Button
+            android:id="@+id/dark_button3"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dark_themed_custom_accent_button"
+            android:theme="@style/DarkAccentRedButtonTheme"/>
+
+        <Button
+            android:id="@+id/dark_button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/dark_themed_custom_accent_button"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
     </LinearLayout>
 
