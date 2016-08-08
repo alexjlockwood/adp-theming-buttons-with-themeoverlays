@@ -1,13 +1,11 @@
 <resources>
 
-    <style name="LightCustomRedButtonTheme" parent="ThemeOverlay.AppCompat.Light">
-        <item name="colorButtonNormal">@color/quantum_googred500</item>
-        <item name="android:textColor">?android:textColorPrimaryInverse</item>
+    <style name="LightAccentRedButtonTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">@color/quantum_googred500</item>
     </style>
 
-    <style name="DarkCustomRedButtonTheme" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="colorButtonNormal">@color/quantum_googred500</item>
-        <item name="android:textColor">?android:textColorPrimaryInverse</item>
+    <style name="DarkAccentRedButtonTheme" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="colorAccent">@color/quantum_googred500</item>
     </style>
 
 </resources>
