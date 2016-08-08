@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class MainActivity extends AppCompatActivity {
+
   private static final String STATE_ARE_ALL_BUTTONS_ENABLED = "state_are_all_buttons_enabled";
   private static final String STATE_ARE_ALL_BUTTONS_PRESSED = "state_are_all_buttons_pressed";
-
   private boolean areAllButtonsEnabled;
   private boolean areAllButtonsPressed;
 
@@ -29,13 +29,14 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void initUi() {
-    final View lightButton4 = findViewById(R.id.light_button4);
+    final View lightBgTintButton =
+        findViewById(R.id.light_themed_background_tint_button);
     ViewCompat.setBackgroundTintList(
-        lightButton4, BackgroundTints.forColoredButton(lightButton4.getContext()));
+        lightBgTintButton, BackgroundTints.forColoredButton(lightBgTintButton.getContext()));
 
-    final View darkButton4 = findViewById(R.id.dark_button4);
+    final View darkBgTintButton = findViewById(R.id.dark_button4);
     ViewCompat.setBackgroundTintList(
-        darkButton4, BackgroundTints.forColoredButton(darkButton4.getContext()));
+        darkBgTintButton, BackgroundTints.forColoredButton(darkBgTintButton.getContext()));
 
     updateUi();
   }

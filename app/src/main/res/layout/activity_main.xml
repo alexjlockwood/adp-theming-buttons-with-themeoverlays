@@ -17,20 +17,17 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/light_button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/light_themed_default_button"/>
 
         <Button
-            android:id="@+id/light_button2"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/light_themed_accent_button"/>
 
         <Button
-            android:id="@+id/light_button3"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,21 +35,19 @@
             android:theme="@style/LightAccentRedButtonTheme"/>
 
         <Button
-            android:id="@+id/light_button4"
+            android:id="@+id/light_themed_background_tint_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/light_themed_custom_accent_button"/>
 
         <Button
-            android:id="@+id/dark_button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dark_themed_default_button"
             android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
         <Button
-            android:id="@+id/dark_button2"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,7 +55,6 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
         <Button
-            android:id="@+id/dark_button3"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,7 +62,7 @@
             android:theme="@style/DarkAccentRedButtonTheme"/>
 
         <Button
-            android:id="@+id/dark_button4"
+            android:id="@+id/dark_themed_background_tint_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
