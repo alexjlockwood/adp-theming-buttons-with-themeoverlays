@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     ViewCompat.setBackgroundTintList(
         lightBgTintButton, BackgroundTints.forColoredButton(lightBgTintButton.getContext()));
 
-    final View darkBgTintButton = findViewById(R.id.dark_button4);
+    final View darkBgTintButton = findViewById(R.id.dark_themed_background_tint_button);
     ViewCompat.setBackgroundTintList(
         darkBgTintButton, BackgroundTints.forColoredButton(darkBgTintButton.getContext()));
 
