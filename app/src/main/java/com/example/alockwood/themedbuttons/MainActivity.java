@@ -25,13 +25,19 @@ public class MainActivity extends AppCompatActivity {
       areAllButtonsPressed = savedInstanceState.getBoolean(STATE_ARE_ALL_BUTTONS_PRESSED);
     }
 
-    updateUi();
+    initUi();
+  }
 
+  private void initUi() {
     final View lightButton4 = findViewById(R.id.light_button4);
-    ViewCompat.setBackgroundTintList(lightButton4, ThemeUtils.createColoredButtonColorStateList(lightButton4.getContext()));
+    ViewCompat.setBackgroundTintList(
+        lightButton4, BackgroundTints.forColoredButton(lightButton4.getContext()));
 
     final View darkButton4 = findViewById(R.id.dark_button4);
-    ViewCompat.setBackgroundTintList(darkButton4, ThemeUtils.createColoredButtonColorStateList(darkButton4.getContext()));
+    ViewCompat.setBackgroundTintList(
+        darkButton4, BackgroundTints.forColoredButton(darkButton4.getContext()));
+
+    updateUi();
   }
 
   private void updateUi() {
@@ -40,11 +46,7 @@ public class MainActivity extends AppCompatActivity {
       viewGroup.getChildAt(i).setEnabled(areAllButtonsEnabled);
       viewGroup.getChildAt(i).setPressed(areAllButtonsPressed);
     }
-    updateActionBarSubtitle();
-    invalidateOptionsMenu();
-  }
 
-  private void updateActionBarSubtitle() {
     final int subtitleResId;
     if (areAllButtonsEnabled && areAllButtonsPressed) {
       subtitleResId = R.string.action_bar_subtitle_enabled_pressed;
@@ -55,15 +57,15 @@ public class MainActivity extends AppCompatActivity {
     } else {
       subtitleResId = R.string.action_bar_subtitle_disabled_unpressed;
     }
-    //noinspection ConstantConditions
     getSupportActionBar().setSubtitle(subtitleResId);
 
+    invalidateOptionsMenu();
   }
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.activity_main, menu);
-    return true;
+    getMenuInflater().inflate(R.menu.activity_main_options_menu, menu);
+    return super.onCreateOptionsMenu(menu);
   }
 
   @Override

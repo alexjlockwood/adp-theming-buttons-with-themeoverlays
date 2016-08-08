@@ -11,17 +11,27 @@ import android.support.v4.graphics.ColorUtils;
 import android.support.v7.content.res.AppCompatResources;
 import android.util.TypedValue;
 
-final class ThemeUtils {
+/**
+ * Utility class for generating background tint {@link ColorStateList}s.
+ */
+final class BackgroundTints {
 
   private static final int[] DISABLED_STATE_SET = new int[]{-android.R.attr.state_enabled};
   private static final int[] PRESSED_STATE_SET = new int[]{android.R.attr.state_pressed};
   private static final int[] FOCUSED_STATE_SET = new int[]{android.R.attr.state_focused};
   private static final int[] EMPTY_STATE_SET = new int[0];
 
-  static ColorStateList createColoredButtonColorStateList(Context context) {
+  /**
+   * Returns a {@link ColorStateList} that can be used as a colored button's background tint.
+   */
+  public static ColorStateList forColoredButton(Context context) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      // On API 21+ we can extract the ColorStateList from XML directly.
       return AppCompatResources.getColorStateList(context, R.color.btn_colored_background_tint);
     }
+
+    // On older platform versions, we need to construct pressed/focused button
+    // states as well and can only be done programatically.
 
     final int[][] states = new int[4][];
     final int[] colors = new int[4];
@@ -84,5 +94,5 @@ final class ThemeUtils {
     }
   }
 
-  private ThemeUtils() {}
+  private BackgroundTints() {}
 }
