@@ -1,5 +1,11 @@
 <resources>
 
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/quantum_indigo500</item>
+        <item name="colorPrimaryDark">@color/quantum_indigo700</item>
+        <item name="colorAccent">@color/quantum_pinkA200</item>
+    </style>
+
     <style name="LightAccentRedButtonTheme" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorAccent">@color/quantum_googred500</item>
     </style>

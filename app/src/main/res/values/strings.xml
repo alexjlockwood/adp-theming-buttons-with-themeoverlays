@@ -7,6 +7,11 @@
     <string name="press_all">Press</string>
     <string name="unpress_all">Unpress</string>
 
+    <string name="action_bar_subtitle_enabled_pressed">Buttons are enabled and pressed</string>
+    <string name="action_bar_subtitle_enabled_unpressed">Buttons are enabled and unpressed</string>
+    <string name="action_bar_subtitle_disabled_pressed">Buttons are disabled and pressed</string>
+    <string name="action_bar_subtitle_disabled_unpressed">Buttons are disabled and unpressed</string>
+
     <string name="light_themed_default_button">Light themed default button</string>
     <string name="light_themed_accent_button">Light themed accent button</string>
     <string name="light_themed_custom_accent_button">Light themed custom accent button</string>

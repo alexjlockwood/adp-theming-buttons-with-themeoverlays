@@ -12,4 +12,5 @@
         android:id="@+id/press_unpress_all"
         android:title=""
         app:showAsAction="ifRoom"/>
+
 </menu>

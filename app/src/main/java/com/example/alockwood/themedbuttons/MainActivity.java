@@ -1,9 +1,11 @@
 package com.example.alockwood.themedbuttons;
 
 import android.os.Bundle;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,19 +25,39 @@ public class MainActivity extends AppCompatActivity {
       areAllButtonsPressed = savedInstanceState.getBoolean(STATE_ARE_ALL_BUTTONS_PRESSED);
     }
 
-    updateButtonState();
+    updateUi();
+
+    final View lightButton4 = findViewById(R.id.light_button4);
+    ViewCompat.setBackgroundTintList(lightButton4, ThemeUtils.createColoredButtonColorStateList(lightButton4.getContext()));
+
+    final View darkButton4 = findViewById(R.id.dark_button4);
+    ViewCompat.setBackgroundTintList(darkButton4, ThemeUtils.createColoredButtonColorStateList(darkButton4.getContext()));
   }
 
-  private void updateButtonState() {
-    final ViewGroup viewGroup = (ViewGroup) findViewById(R.id.linearlayout);
+  private void updateUi() {
+    final ViewGroup viewGroup = (ViewGroup) findViewById(R.id.button_container);
     for (int i = 0; i < viewGroup.getChildCount(); i++) {
       viewGroup.getChildAt(i).setEnabled(areAllButtonsEnabled);
       viewGroup.getChildAt(i).setPressed(areAllButtonsPressed);
     }
+    updateActionBarSubtitle();
     invalidateOptionsMenu();
-    final String enabledState = areAllButtonsEnabled ? "enabled" : "disabled";
-    final String pressedState = areAllButtonsPressed ? "pressed" : "unpressed";
-    getSupportActionBar().setSubtitle("Buttons are " + enabledState + " & " + pressedState);
+  }
+
+  private void updateActionBarSubtitle() {
+    final int subtitleResId;
+    if (areAllButtonsEnabled && areAllButtonsPressed) {
+      subtitleResId = R.string.action_bar_subtitle_enabled_pressed;
+    } else if (areAllButtonsEnabled) {
+      subtitleResId = R.string.action_bar_subtitle_enabled_unpressed;
+    } else if (areAllButtonsPressed) {
+      subtitleResId = R.string.action_bar_subtitle_disabled_pressed;
+    } else {
+      subtitleResId = R.string.action_bar_subtitle_disabled_unpressed;
+    }
+    //noinspection ConstantConditions
+    getSupportActionBar().setSubtitle(subtitleResId);
+
   }
 
   @Override
@@ -57,12 +79,12 @@ public class MainActivity extends AppCompatActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
     if (item.getItemId() == R.id.enable_disable_all) {
       areAllButtonsEnabled = !areAllButtonsEnabled;
-      updateButtonState();
+      updateUi();
       return true;
     }
     if (item.getItemId() == R.id.press_unpress_all) {
       areAllButtonsPressed = !areAllButtonsPressed;
-      updateButtonState();
+      updateUi();
       return true;
     }
     return super.onOptionsItemSelected(item);
