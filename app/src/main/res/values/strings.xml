@@ -1,7 +1,17 @@
 <resources>
+
     <string name="app_name">Themed Buttons</string>
+
     <string name="enable_all">Enable</string>
     <string name="disable_all">Disable</string>
     <string name="press_all">Press</string>
     <string name="unpress_all">Unpress</string>
+
+    <string name="light_themed_default_button">Light themed default button</string>
+    <string name="light_themed_accent_button">Light themed accent button</string>
+    <string name="light_themed_custom_accent_button">Light themed custom accent button</string>
+    <string name="dark_themed_default_button">Dark themed default button</string>
+    <string name="dark_themed_accent_button">Dark themed accent button</string>
+    <string name="dark_themed_custom_accent_button">Dark themed custom accent button</string>
+
 </resources>
