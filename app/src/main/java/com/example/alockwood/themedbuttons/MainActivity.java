@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
   private static final String STATE_ARE_ALL_BUTTONS_ENABLED = "state_are_all_buttons_enabled";
   private static final String STATE_ARE_ALL_BUTTONS_PRESSED = "state_are_all_buttons_pressed";
-  private boolean areAllButtonsEnabled;
+  private boolean areAllButtonsEnabled = true;
   private boolean areAllButtonsPressed;
 
   @Override
