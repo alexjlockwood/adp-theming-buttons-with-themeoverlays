@@ -13,7 +13,7 @@ import android.util.TypedValue;
 /**
  * Utility class for creating background tint {@link ColorStateList}s.
  */
-final class BackgroundTints {
+public final class BackgroundTints {
   private static final int[] DISABLED_STATE_SET = new int[]{-android.R.attr.state_enabled};
   private static final int[] PRESSED_STATE_SET = new int[]{android.R.attr.state_pressed};
   private static final int[] FOCUSED_STATE_SET = new int[]{android.R.attr.state_focused};
@@ -22,11 +22,11 @@ final class BackgroundTints {
   /**
    * Returns a {@link ColorStateList} that can be used as a colored button's background tint.
    * Note that this code makes use of the {@code android.support.v4.graphics.ColorUtils}
-   * and {@code android.support.v7.content.res.AppCompatResources} utility classes.
+   * utility class.
    */
-  public static ColorStateList forColoredButton(Context context, @ColorInt int accentColor) {
+  public static ColorStateList forColoredButton(Context context, @ColorInt int backgroundColor) {
     // On pre-Lollipop devices, we need 4 states total (disabled, pressed, focused, and default).
-    // On post-Lollipop devices, we only need 2 states total (disabled and default); the button's
+    // On post-Lollipop devices, we need 2 states total (disabled and default); the button's
     // RippleDrawable will animate the pressed and focused state changes for us automatically.
     final int numStates = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 2 : 4;
 
@@ -40,24 +40,26 @@ final class BackgroundTints {
     i++;
 
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-      final int highlightedAccentColor = getHighlightedAccentColor(context, accentColor);
+      final int highlightedBackgroundColor = getHighlightedBackgroundColor(context, backgroundColor);
 
       states[i] = PRESSED_STATE_SET;
-      colors[i] = highlightedAccentColor;
+      colors[i] = highlightedBackgroundColor;
       i++;
 
       states[i] = FOCUSED_STATE_SET;
-      colors[i] = highlightedAccentColor;
+      colors[i] = highlightedBackgroundColor;
       i++;
     }
 
     states[i] = EMPTY_STATE_SET;
-    colors[i] = accentColor;
+    colors[i] = backgroundColor;
 
     return new ColorStateList(states, colors);
   }
 
-  /** Returns the theme-dependent ARGB background color to use for disabled buttons. */
+  /**
+   * Returns the theme-dependent ARGB background color to use for disabled buttons.
+   */
   @ColorInt
   private static int getDisabledButtonBackgroundColor(Context context) {
     // Extract the disabled alpha to apply to the button using the context's theme.
@@ -76,17 +78,15 @@ final class BackgroundTints {
 
   /**
    * Returns the theme-dependent ARGB color that results when colorControlHighlight is drawn
-   * on top of the provided accent color.
+   * on top of the provided background color.
    */
   @ColorInt
-  private static int getHighlightedAccentColor(Context context, @ColorInt int accentColor) {
+  private static int getHighlightedBackgroundColor(Context context, @ColorInt int backgroundColor) {
     final int colorControlHighlight = getThemeAttrColor(context, R.attr.colorControlHighlight);
-    return ColorUtils.compositeColors(colorControlHighlight, accentColor);
+    return ColorUtils.compositeColors(colorControlHighlight, backgroundColor);
   }
 
-  /**
-   * Returns the theme-dependent ARGB color associated with the provided theme attribute.
-   */
+  /** Returns the theme-dependent ARGB color associated with the provided theme attribute. */
   @ColorInt
   private static int getThemeAttrColor(Context context, @AttrRes int attr) {
     final TypedArray array = context.obtainStyledAttributes(null, new int[]{attr});
