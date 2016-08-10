@@ -11,15 +11,13 @@ import android.support.v4.graphics.ColorUtils;
 import android.util.TypedValue;
 
 /**
- * Utility class for generating background tint {@link ColorStateList}s.
+ * Utility class for creating background tint {@link ColorStateList}s.
  */
 final class BackgroundTints {
   private static final int[] DISABLED_STATE_SET = new int[]{-android.R.attr.state_enabled};
   private static final int[] PRESSED_STATE_SET = new int[]{android.R.attr.state_pressed};
   private static final int[] FOCUSED_STATE_SET = new int[]{android.R.attr.state_focused};
   private static final int[] EMPTY_STATE_SET = new int[0];
-
-  private static final boolean IS_LOLLIPOP = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
 
   /**
    * Returns a {@link ColorStateList} that can be used as a colored button's background tint.
@@ -30,7 +28,7 @@ final class BackgroundTints {
     // On pre-Lollipop devices, we need 4 states total (disabled, pressed, focused, and default).
     // On post-Lollipop devices, we only need 2 states total (disabled and default); the button's
     // RippleDrawable will animate the pressed and focused state changes for us automatically.
-    final int numStates = IS_LOLLIPOP ? 2 : 4;
+    final int numStates = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 2 : 4;
 
     final int[][] states = new int[numStates][];
     final int[] colors = new int[numStates];
@@ -41,7 +39,7 @@ final class BackgroundTints {
     colors[i] = getDisabledButtonBackgroundColor(context);
     i++;
 
-    if (!IS_LOLLIPOP) {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
       final int highlightedAccentColor = getHighlightedAccentColor(context, accentColor);
 
       states[i] = PRESSED_STATE_SET;
@@ -86,7 +84,9 @@ final class BackgroundTints {
     return ColorUtils.compositeColors(colorControlHighlight, accentColor);
   }
 
-  /** Returns the theme-dependent ARGB color associated with the provided theme attribute. */
+  /**
+   * Returns the theme-dependent ARGB color associated with the provided theme attribute.
+   */
   @ColorInt
   private static int getThemeAttrColor(Context context, @AttrRes int attr) {
     final TypedArray array = context.obtainStyledAttributes(null, new int[]{attr});
