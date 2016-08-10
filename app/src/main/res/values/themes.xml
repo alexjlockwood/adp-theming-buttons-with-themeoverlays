@@ -6,11 +6,11 @@
         <item name="colorAccent">@color/quantum_pinkA200</item>
     </style>
 
-    <style name="LightAccentRedButtonTheme" parent="ThemeOverlay.AppCompat.Light">
+    <style name="RedButtonLightTheme" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorAccent">@color/quantum_googred500</item>
     </style>
 
-    <style name="DarkAccentRedButtonTheme" parent="ThemeOverlay.AppCompat.Dark">
+    <style name="RedButtonDarkTheme" parent="ThemeOverlay.AppCompat.Dark">
         <item name="colorAccent">@color/quantum_googred500</item>
     </style>
 

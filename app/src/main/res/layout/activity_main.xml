@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/light_themed_custom_accent_button"
-            android:theme="@style/LightAccentRedButtonTheme"/>
+            android:theme="@style/RedButtonLightTheme"/>
 
         <Button
             android:id="@+id/light_themed_background_tint_button"
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dark_themed_custom_accent_button"
-            android:theme="@style/DarkAccentRedButtonTheme"/>
+            android:theme="@style/RedButtonDarkTheme"/>
 
         <Button
             android:id="@+id/dark_themed_background_tint_button"
