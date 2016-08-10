@@ -1,6 +1,7 @@
 package com.example.alockwood.themedbuttons;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -29,14 +30,15 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void initUi() {
-    final View lightBgTintButton =
-        findViewById(R.id.light_themed_background_tint_button);
-    ViewCompat.setBackgroundTintList(
-        lightBgTintButton, BackgroundTints.forColoredButton(lightBgTintButton.getContext()));
+    final int googRed500 = ContextCompat.getColor(this, R.color.quantum_googred500);
 
-    final View darkBgTintButton = findViewById(R.id.dark_themed_background_tint_button);
+    final View lightBtn = findViewById(R.id.light_themed_background_tint_button);
     ViewCompat.setBackgroundTintList(
-        darkBgTintButton, BackgroundTints.forColoredButton(darkBgTintButton.getContext()));
+        lightBtn, BackgroundTints.forColoredButton(lightBtn.getContext(), googRed500));
+
+    final View darkBtn = findViewById(R.id.dark_themed_background_tint_button);
+    ViewCompat.setBackgroundTintList(
+        darkBtn, BackgroundTints.forColoredButton(darkBtn.getContext(), googRed500));
 
     updateUi();
   }
@@ -45,18 +47,18 @@ public class MainActivity extends AppCompatActivity {
     final ViewGroup viewGroup = (ViewGroup) findViewById(R.id.button_container);
     for (int i = 0; i < viewGroup.getChildCount(); i++) {
       viewGroup.getChildAt(i).setEnabled(areAllButtonsEnabled);
-      viewGroup.getChildAt(i).setPressed(areAllButtonsPressed);
+      viewGroup.getChildAt(i).setPressed(areAllButtonsEnabled && areAllButtonsPressed);
     }
 
     final int subtitleResId;
-    if (areAllButtonsEnabled && areAllButtonsPressed) {
-      subtitleResId = R.string.action_bar_subtitle_enabled_pressed;
-    } else if (areAllButtonsEnabled) {
-      subtitleResId = R.string.action_bar_subtitle_enabled_unpressed;
-    } else if (areAllButtonsPressed) {
-      subtitleResId = R.string.action_bar_subtitle_disabled_pressed;
+    if (areAllButtonsEnabled) {
+      if (areAllButtonsPressed) {
+        subtitleResId = R.string.action_bar_subtitle_enabled_pressed;
+      } else {
+        subtitleResId = R.string.action_bar_subtitle_enabled_unpressed;
+      }
     } else {
-      subtitleResId = R.string.action_bar_subtitle_disabled_unpressed;
+      subtitleResId = R.string.action_bar_subtitle_disabled;
     }
     getSupportActionBar().setSubtitle(subtitleResId);
 
@@ -71,10 +73,11 @@ public class MainActivity extends AppCompatActivity {
 
   @Override
   public boolean onPrepareOptionsMenu(Menu menu) {
-    menu.findItem(R.id.enable_disable_all)
-        .setTitle(areAllButtonsEnabled ? R.string.disable_all : R.string.enable_all);
-    menu.findItem(R.id.press_unpress_all)
-        .setTitle(areAllButtonsPressed ? R.string.unpress_all : R.string.press_all);
+    final MenuItem enableDisableItem =  menu.findItem(R.id.enable_disable_all);
+    final MenuItem pressUnpressItem = menu.findItem(R.id.press_unpress_all);
+    enableDisableItem.setTitle(areAllButtonsEnabled ? R.string.disable_all : R.string.enable_all);
+    pressUnpressItem.setTitle(areAllButtonsPressed ? R.string.unpress_all : R.string.press_all);
+    pressUnpressItem.setVisible(areAllButtonsEnabled);
     return super.onPrepareOptionsMenu(menu);
   }
 
