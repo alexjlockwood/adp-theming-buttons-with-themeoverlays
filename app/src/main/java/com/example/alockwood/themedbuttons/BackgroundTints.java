@@ -56,17 +56,10 @@ final class BackgroundTints {
 
   @ColorInt
   private static int getDisabledButtonBackgroundColor(Context context) {
-    final ColorStateList csl = getThemeAttrColorStateList(context, R.attr.colorButtonNormal);
-    if (csl != null && csl.isStateful()) {
-      // If the CSL is stateful, we'll assume it has a disabled state and use it.
-      return csl.getColorForState(DISABLED_STATE_SET, csl.getDefaultColor());
-    } else {
-      // Otherwise we'll generate the color using disabledAlpha from the theme.
-      final float disabledAlpha = getDisabledAlpha(context);
-      final int colorButtonNormal = getThemeAttrColor(context, R.attr.colorButtonNormal);
-      return ColorUtils.setAlphaComponent(
-          colorButtonNormal, Math.round(Color.alpha(colorButtonNormal) * disabledAlpha));
-    }
+    final float disabledAlpha = getDisabledAlpha(context);
+    final int colorButtonNormal = getThemeAttrColor(context, R.attr.colorButtonNormal);
+    return ColorUtils.setAlphaComponent(
+        colorButtonNormal, Math.round(Color.alpha(colorButtonNormal) * disabledAlpha));
   }
 
   private static float getDisabledAlpha(Context context) {
@@ -80,15 +73,6 @@ final class BackgroundTints {
     final TypedArray array = context.obtainStyledAttributes(null, new int[]{attr});
     try {
       return array.getColor(0, 0);
-    } finally {
-      array.recycle();
-    }
-  }
-
-  private static ColorStateList getThemeAttrColorStateList(Context context, @AttrRes int attr) {
-    final TypedArray array = context.obtainStyledAttributes(null, new int[]{attr});
-    try {
-      return array.getColorStateList(0);
     } finally {
       array.recycle();
     }
