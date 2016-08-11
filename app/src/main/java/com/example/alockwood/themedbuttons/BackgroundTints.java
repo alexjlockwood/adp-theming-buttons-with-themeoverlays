@@ -28,7 +28,7 @@ public final class BackgroundTints {
     // On pre-Lollipop devices, we need 4 states total (disabled, pressed, focused, and default).
     // On post-Lollipop devices, we need 2 states total (disabled and default); the button's
     // RippleDrawable will animate the pressed and focused state changes for us automatically.
-    final int numStates = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 2 : 4;
+    final int numStates = Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP ? 4 : 2;
 
     final int[][] states = new int[numStates][];
     final int[] colors = new int[numStates];
